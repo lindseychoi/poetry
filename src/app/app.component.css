@@ -1,0 +1,37 @@
+.toolbar {
+    background-color: rgb(142, 21, 186);
+    height: 10%;
+}
+
+.font {
+    padding-top: 3.75%;
+    padding-left: 1%;
+    color: white !important;
+    font-size: 50px;
+}
+
+.search-spacing {
+    display: flex;
+    justify-content: left;
+}
+
+.space-above {
+    margin-top: 1.5%;
+}
+
+.space-left {
+    padding-left: 1%;
+}
+
+.input {
+    width: 100%;
+}
+
+.full-width {
+    width: 33%;
+}
+
+.btn-size {
+    height: 55px;
+    width: 110px;
+}

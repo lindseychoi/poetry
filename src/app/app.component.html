@@ -1,30 +1,66 @@
-<router-outlet>
-  <form
-  [formGroup]="requestPoetryForm">
-    <div>
-      <mat-form-field>
-        <mat-label>Select search type</mat-label>
-        <mat-select formControlName="byTitleOrAuthor">
-          <mat-option
-          *ngFor="let type of searchTypes | keyvalue"
-          [value]="type.value">
-          {{ type.value }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <mat-label>What poem or author you like to search for?</mat-label>
-        <input 
-          matInput
-          type="text"
-          formControlName="inputRequest"
-        />
-      </mat-form-field>
-    </div>
-    <div>
-      <button mat-raised-button (click)="getPoetry()">Search</button>
-    </div>
-  </form>
+<html>
+  <body>
+    <!-- This app is small enough that we don't have an routes hooked up, but that is what this router outlet is for -->
+    <router-outlet>
+      <!-- For scalability, the search and the results would be broken out into separate components in the components folder -->
+      <!-- For now, they're going to live here together in the top level component. -->
+      <div class="toolbar">
+        <div class="font">Poetry Database</div>
+      </div>
+      <!-- SEARCH POETRY FEATURE -->
+      <div class="space-above">
+        <form
+        [formGroup]="requestPoetryForm">
+          <div class="search-spacing">
+            <div class="space-left">
+              <mat-form-field>
+                <mat-label>Select search type</mat-label>
+                <mat-select formControlName="byTitleOrAuthor">
+                  <mat-option
+                  *ngFor="let type of searchTypes | keyvalue"
+                  [value]="type.value">
+                  {{ type.value }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="full-width space-left">
+              <mat-form-field class="input">
+                <mat-label>What poem or author you like to search for?</mat-label>
+                <input 
+                  matInput
+                  type="text"
+                  formControlName="inputRequest"
+                />
+              </mat-form-field>
+            </div>
+            <div class="space-left">
+              <button 
+              mat-raised-button 
+              class="btn-size"
+              (click)="getPoetry()">Search</button>
+            </div>
+          </div>
+        </form>
+        
+      </div>
 
-</router-outlet>
+      <!-- POETRY RESULTS FEATURE -->
+      <!-- This is an expandable card that generates dynamically based on the results from the API. There are enough results that I would want to look into pagination or other ways to render this much data, like a data grid -->
+      <div>
+        <div *ngFor="let result of results">
+          <mat-accordion>
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                {{ result.title }}, {{ result.author }}
+              </mat-expansion-panel-header>
+              <div> {{ result.lines }} </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+
+    </router-outlet>
+  </body> 
+</html>
