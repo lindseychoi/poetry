@@ -60,7 +60,7 @@ export class AppComponent implements OnInit{
           this.results = res.body;
         }
       }, (err) => {
-        alert("Unable to process your request, please check the input you provided and try again!");
+        alert("Unable to process your request, please check the input you provided and try again! Have you selected a search type and entered a title or author to look up?");
         console.log('The error is: ', err);
       });
   }

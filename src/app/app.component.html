@@ -15,16 +15,17 @@
       <div>
         <form
         [formGroup]="requestPoetryForm">
-          <div class="search-spacing">
+          <div class="search-spacing space-above">
             <div class="space-left">
               <mat-form-field>
-                <mat-label>Select search type</mat-label>
+                <mat-label class="content-text">Select search type</mat-label>
                 <mat-select 
                 formControlName="byTitleOrAuthor"
                 (selectionChange)="switchInputLabel($event.value)">
                   <mat-option
                   *ngFor="let type of searchTypes | keyvalue"
                   [value]="type.value"
+                  class="content-text"
                   >
                   {{ type.value }}</mat-option>
                 </mat-select>
@@ -32,7 +33,7 @@
             </div>
             <div class="full-width space-left">
               <mat-form-field class="input">
-                <mat-label>{{ label }}</mat-label>
+                <mat-label class="content-text">{{ label }}</mat-label>
                 <input 
                   matInput
                   type="text"
@@ -57,10 +58,14 @@
             <mat-expansion-panel
               (opened)="panelOpenState = true"
               (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                {{ result.title }}, {{ result.author }}
+              <mat-expansion-panel-header class="content-text header-size">
+                {{ result.title }} by {{ result.author }}
               </mat-expansion-panel-header>
-              <div *ngFor="let line of result.lines"> {{ line }} </div>
+              <div 
+                *ngFor="let line of result.lines"
+                class="content-text line-size"> 
+                {{ line }} 
+              </div>
             </mat-expansion-panel>
           </mat-accordion>
         </div>

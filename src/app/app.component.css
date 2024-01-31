@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Dancing+Script&family=Overpass:ital,wght@1,100&display=swap');
+
 .toolbar {
     background-color: rgb(142, 21, 186);
     height: 10%;
@@ -6,6 +8,19 @@
 .font {
     color: white !important;
     font-size: 50px;
+    font-family: 'Abel', sans-serif;
+}
+
+.content-text {
+    font-family: 'Abel', sans-serif;
+}
+
+.header-size {
+    font-size: 20px;
+}
+
+.line-size {
+    font-size: 18px;
 }
 
 .search-spacing {
@@ -16,7 +31,7 @@
 }
 
 .space-above {
-    padding-top: 1.5%;
+    padding-top: 1%;
 }
 
 .space-left {
@@ -24,7 +39,8 @@
 }
 
 .icon-space {
-    padding-left: 1%;
+    padding-left: 1.25%;
+    padding-bottom: .5%;
 }
 
 .input {
