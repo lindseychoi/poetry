@@ -23,8 +23,19 @@ export class AppComponent implements OnInit{
   }
   
   async getPoetry() {
+    let type;
+
+    if (this.requestPoetryForm.value.byTitleOrAuthor === 'Search by title') {
+      type = 'title'
+    } else {
+      type = 'author'
+    };
+
+    const poetryParams = [type, this.requestPoetryForm.value.inputRequest];
+
     console.log('hitting get poetry in app component')
-    const poem = this._service.getPoetry().subscribe(
+    // the subscribe used in this way is deprecated; I would normally track errors through the NgRx store or research more modern ways of error handling with the Http client if time allowed.
+    const poem = this._service.getPoetry(poetryParams).subscribe(
       (res) => {
         if (res.status == 200) {
           console.log(res.body);

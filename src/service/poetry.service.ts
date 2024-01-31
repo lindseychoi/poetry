@@ -10,8 +10,9 @@ export class PoetryService {
 
     constructor(private http: HttpClient) {}
 
-    getPoetry() {
+    getPoetry(params: string[]) {
+        console.log('list', params);
         console.log('firing this off: ', `${this.baseUrl}/title/Ozymandias/lines.json`);
-        return this.http.get(`${this.baseUrl}/title/The Life we have is very great./lines.json`, {observe: 'response'})
+        return this.http.get(`${this.baseUrl}/${params[0]}/${params[1]}`, {observe: 'response'})
     }
 }
