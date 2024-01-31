@@ -4,8 +4,6 @@
 }
 
 .font {
-    padding-top: 3.75%;
-    padding-left: 1%;
     color: white !important;
     font-size: 50px;
 }
@@ -13,13 +11,19 @@
 .search-spacing {
     display: flex;
     justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .space-above {
-    margin-top: 1.5%;
+    padding-top: 1.5%;
 }
 
 .space-left {
+    padding-left: 1%;
+}
+
+.icon-space {
     padding-left: 1%;
 }
 
@@ -28,10 +32,20 @@
 }
 
 .full-width {
-    width: 33%;
+    width: 325px;
 }
 
-.btn-size {
-    height: 55px;
-    width: 110px;
+.icon {
+    color: rgb(142, 21, 186);
+    transform: scale(2);
 }
+
+.icon:hover {
+    cursor: pointer;
+    color: rgb(194, 126, 219); 
+}
+
+.icon-toolbar {
+    color: white !important;
+}
+

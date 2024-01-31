@@ -1,31 +1,38 @@
 <html>
   <body>
+    <!-- The toolbar should not be within the router outlet so that when we start adding routes later, the toolbar will always be here. This is another example of a component I would break out into the components folder -->
+    <mat-toolbar class="toolbar">
+      <div class="font">Poetry Database</div>
+      <button mat-icon-button>
+        <mat-icon class="icon-toolbar">github</mat-icon>
+      </button>
+    </mat-toolbar>
     <!-- This app is small enough that we don't have an routes hooked up, but that is what this router outlet is for -->
     <router-outlet>
       <!-- For scalability, the search and the results would be broken out into separate components in the components folder -->
       <!-- For now, they're going to live here together in the top level component. -->
-      <div class="toolbar">
-        <div class="font">Poetry Database</div>
-      </div>
       <!-- SEARCH POETRY FEATURE -->
-      <div class="space-above">
+      <div>
         <form
         [formGroup]="requestPoetryForm">
           <div class="search-spacing">
             <div class="space-left">
               <mat-form-field>
                 <mat-label>Select search type</mat-label>
-                <mat-select formControlName="byTitleOrAuthor">
+                <mat-select 
+                formControlName="byTitleOrAuthor"
+                (selectionChange)="switchInputLabel($event.value)">
                   <mat-option
                   *ngFor="let type of searchTypes | keyvalue"
-                  [value]="type.value">
+                  [value]="type.value"
+                  >
                   {{ type.value }}</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
             <div class="full-width space-left">
               <mat-form-field class="input">
-                <mat-label>What poem or author you like to search for?</mat-label>
+                <mat-label>{{ label }}</mat-label>
                 <input 
                   matInput
                   type="text"
@@ -33,11 +40,9 @@
                 />
               </mat-form-field>
             </div>
-            <div class="space-left">
-              <button 
-              mat-raised-button 
-              class="btn-size"
-              (click)="getPoetry()">Search</button>
+            <div class="icon-space"
+              (click)="getPoetry()">
+                <mat-icon class="icon">search</mat-icon>
             </div>
           </div>
         </form>
@@ -55,7 +60,7 @@
               <mat-expansion-panel-header>
                 {{ result.title }}, {{ result.author }}
               </mat-expansion-panel-header>
-              <div> {{ result.lines }} </div>
+              <div *ngFor="let line of result.lines"> {{ line }} </div>
             </mat-expansion-panel>
           </mat-accordion>
         </div>

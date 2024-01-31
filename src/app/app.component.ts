@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
   requestPoetryForm!: FormGroup;
   // We specify and write custom type interfaces and enums in the data folder of the application and then import them as necessary
   searchTypes = Object.values(SearchTypes);
+  label = '';
   results!: any;
 
   // declare the service file in the constructor so we can use it
@@ -25,6 +26,14 @@ export class AppComponent implements OnInit{
       byTitleOrAuthor: new FormControl('', Validators.required),
       inputRequest: new FormControl('', Validators.required)
     })
+  }
+
+  switchInputLabel(searchType: string) {
+    if (searchType === 'Search by author') {
+      this.label = 'Author Name';
+    } else {
+      this.label = 'Title Name';
+    }
   }
 
   getPoetry() {
