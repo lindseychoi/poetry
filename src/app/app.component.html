@@ -41,6 +41,17 @@
                 />
               </mat-form-field>
             </div>
+            <div class="full-width space-left"
+            *ngIf="extraParams">
+              <mat-form-field class="input">
+                <mat-label class="content-text">Title Name</mat-label>
+                <input 
+                  matInput
+                  type="text"
+                  formControlName="additionalInfo"
+                />
+              </mat-form-field>
+            </div>
             <div class="icon-space"
               (click)="getPoetry()">
                 <mat-icon class="icon">search</mat-icon>
@@ -52,7 +63,7 @@
 
       <!-- POETRY RESULTS FEATURE -->
       <!-- This is an expandable card that generates dynamically based on the results from the API. There are enough results that I would want to look into pagination or other ways to render this much data, like a data grid -->
-      <div>
+      <div *ngIf="!doNotRenderCards">
         <div *ngFor="let result of results">
           <mat-accordion>
             <mat-expansion-panel
@@ -69,6 +80,12 @@
             </mat-expansion-panel>
           </mat-accordion>
         </div>
+      </div>
+
+      <div 
+      *ngIf="doNotRenderCards"
+      class="content-text headersize space-left">
+        You have forgotten to fill out an input, please remedy this and search again!
       </div>
 
     </router-outlet>

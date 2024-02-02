@@ -15,6 +15,15 @@ export class PoetryService {
     // The endpoint information is being passed in through the params
     // The observe at the end is for error handling
     getPoetry(params: string[]) {
-        return this.http.get(`${this.baseUrl}/${params[0]}/${params[1]}`, {observe: 'response'})
+        let formattedParams;
+
+        // here's how we're going to take into account searching by author and title
+        if (params.length > 2) {
+            formattedParams = `${params[0]}/${params[1]}/${params[2]}`;
+        } else {
+            formattedParams = `${params[0]}/${params[1]}`;
+        };   
+
+        return this.http.get(`${this.baseUrl}/${formattedParams}`, {observe: 'response'})
     }
 }
