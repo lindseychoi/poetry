@@ -26,7 +26,6 @@
 .search-spacing {
     display: flex;
     justify-content: left;
-    align-items: center;
     flex-wrap: wrap;
 }
 
@@ -61,7 +60,8 @@
     color: rgb(194, 126, 219); 
 }
 
-.icon-toolbar {
-    color: white !important;
+.btn-size {
+    height: 55px;
+    width: 110px;
+    font-size: 20px !important;
 }
-
